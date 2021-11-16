@@ -16,5 +16,5 @@ Ballon shooting game using the x86 assembly language
 - [Nourhan Ashraf](https://github.com/nourhan-ashraf)
 - [Ahmed Ghonim](https://github.com/A-bahaa)
 - [Mohamed Abd-Elghany](https://github.com/MuhamedAbdelghany)
-- [Amr Mohamed]
+- [Amr Mohamed](https://github.com/Amr-al)
 - [Abd-Elrhman Hesham]
