@@ -94,7 +94,7 @@
             
                                                                                           ;clearing the screen to go to start the game
             mov ah,0                                                                      ;set display mode function (video mode)
-            mov al,1                                                                      ;mode 2 = text 80 x 25 16 grey
+            mov al,2                                                                      ;mode 2 = text 80 x 25 16 grey
             int 10h                                                                       ;video service bios interrupt
                     
              
