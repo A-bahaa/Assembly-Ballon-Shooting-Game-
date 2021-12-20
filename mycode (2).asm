@@ -190,7 +190,7 @@
                 mov bx, arrow_pos
                 mov es:[bx], cx
     
-                add arrow_pos,6d               ;draw new position
+                add arrow_pos,4d               ;draw new position
                 mov cl, 26d                    ;draw the arrow
                 mov ch, 1011b
                 
