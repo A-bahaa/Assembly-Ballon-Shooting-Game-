@@ -1,5 +1,4 @@
-
-.MODEL LARGE  
+                                                        .MODEL LARGE  
 .STACK 100H
 
 .DATA
@@ -42,11 +41,15 @@
    dw '              *          >>>>Press Enter to start<<<<             *',0ah,0dh,
    dw '              *                                                   *',0AH,0DH,
    dw '              *                                                   *',0AH,0DH,
-   dw '              *****************************************************',0AH,0DH,'$'   ;the dollar indicating the end of the message
+   dw '              *****************************************************',0AH,0DH,'$'   ;the dollar indicating the end of the message  
    
    
+   
+                        
+                        
+   state_buf db '00:0:0:0:0:0:00:00$'          ;score veriable
+
    loon_pos1 dw 3896d
-   loon_pos2 dw 3860d
    
    player_pos dw 1760d
     
@@ -54,7 +57,7 @@
    arrow_limit dw 60d   
    arrow_status dw 0d
    
-   direction dw 0d 
+   direction dw  0d 
 
 
 .CODE
@@ -96,16 +99,22 @@
             mov ah,0                                                                      ;set display mode function (video mode)
             mov al,2                                                                      ;mode 2 = text 80 x 25 16 grey
             int 10h                                                                       ;video service bios interrupt
-                    
+           
+            lea bx,state_buf                   ;display score
+            call show_score 
+            lea dx,state_buf
+            mov ah,09h
+            int 21h      
              
-                    
                     
             main_loop:
             
-            
-               
+              
+                 
+                 
                  mov cl, 16d                         ;draw player 
                  mov ch, 1111b                       ;controls the color
+                
                 
                  mov bx,player_pos 
                  mov es:[bx], cx 
@@ -117,19 +126,16 @@
                 
                  cmp direction,10d                   ;check if the direction variable change to 10d (up)
                  je player_up                        
-                                                       
+ 
                  cmp direction,4d                   ;check if the direction variable change to 4d (down)
                  je player_down                     
-                 
+ 
                  cmp arrow_status,1                 ;check any arrow to rander
                  je render_arrow
  
                  cmp loon_pos1, 0d                   ;check missed loon1
                  jle fire_loon1
-             
-                 cmp loon_pos2, 0d                   ;check missed loon2
-                 jle fire_loon2
-                 
+ 
                   
                 
               
@@ -138,7 +144,7 @@
             
             
                 mov cl, ' '                    ;hide old loon
-                ;mov ch, 1111b
+                mov ch, 1111b
         
                 mov bx,loon_pos1 
                 mov es:[bx], cx
@@ -151,29 +157,6 @@
                 mov bx,loon_pos1 
                 mov es:[bx], cx
                 
-                
-                jne render_loon2  
-                
-                
-              
-              
-              
-             render_loon2:
-            
-            
-                mov cl, ' '                    ;hide old loon
-                ;mov ch, 1111b
-        
-                mov bx,loon_pos2 
-                mov es:[bx], cx
-                
-                sub loon_pos2,320d              ;and draw new one in new position
-                
-                mov cl, 53d
-                mov ch, 1101b
-        
-                mov bx,loon_pos2 
-                mov es:[bx], cx
                 
                 jne main_loop
               
@@ -190,7 +173,7 @@
                 mov bx, arrow_pos
                 mov es:[bx], cx
     
-                add arrow_pos,4d               ;draw new position
+                add arrow_pos,6d               ;draw new position
                 mov cl, 26d                    ;draw the arrow
                 mov ch, 1011b
                 
@@ -216,12 +199,7 @@
                 jmp render_loon1
                                   
              
-                                  
-            fire_loon2: 
-            
-            
-                mov loon_pos2 , 3860d     ; relocating loon2
-                jmp render_loon2                         
+                         
                                   
                                   
                                   
@@ -333,10 +311,37 @@
                 mov ch, 1111b 
                 mov bx,arrow_pos
                 mov es:[bx], cx 
-                jmp main_loop 
+                jmp main_loop
+
+           
+     
                 
-
-
-   MAIN ENDP
+   MAIN ENDP    
+           proc show_score
+            lea bx,state_buf
+         
+            mov dx,48d 
+         
+            mov [bx], 9d
+            mov [bx+1], 9d
+            mov [bx+2], 9d
+            mov [bx+3], 9d
+            mov [bx+4], 'H'
+            mov [bx+5], 'i'                                        
+            mov [bx+6], 't'
+            mov [bx+7], 's'
+            mov [bx+8], ':'
+            mov [bx+9], dx
+         
+            mov dx,48d
+            mov [bx+10], ' '
+            mov [bx+11], 'M'
+            mov [bx+12], 'i'
+            mov [bx+13], 's'
+            mov [bx+14], 's'
+            mov [bx+15], ':'
+            mov [bx+16], dx
+        ret    
+        show_score endp 
 
 END MAIN
