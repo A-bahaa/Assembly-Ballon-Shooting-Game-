@@ -98,7 +98,7 @@ main_loop:
         jne key_pressed                                                               ;jmp if zero flag == 0 
         
  
-        cmp miss , 1                                                                  ; check number of misses and zf == 1 
+        cmp miss , 2                                                                  ; check number of misses and zf == 1 
         je  exit                                                                      ; if zf == 1 then close the program
         
         
