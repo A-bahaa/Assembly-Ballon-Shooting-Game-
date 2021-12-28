@@ -1,4 +1,4 @@
-                                
+                               
 .model large                                ;supports multiple code and multiple data segments.
 .data
 
@@ -17,7 +17,18 @@ direction db 0d
 state_buf db 'aaaaaaaassssssssss$'          ;score veriable
 hit_num db 0d
 hits dw 0d
-miss dw 0d  
+miss dw 0d 
+
+game_over_str dw '  ',0ah,0dh
+ 
+dw ' ',0ah,0dh 
+dw ' ',0ah,0dh
+dw ' ',0ah,0dh
+dw ' ',0ah,0dh
+dw ' ',0ah,0dh
+dw ' ',0ah,0dh
+dw '                                Game Over',0ah,0dh
+dw '                        Press Enter to start again$',0ah,0dh   
 
   start_message dw '                                                                     ',0AH,0DH,
    dw '                                                                     ',0AH,0DH,
@@ -99,7 +110,7 @@ main_loop:
         
  
         cmp miss , 8                                                                  ; check number of misses and zf == 1 
-        je  exit                                                                      ; if zf == 1 then close the program
+        jge game_over                                                                      ; if zf == 1 then close the program
         
         
         
@@ -300,7 +311,12 @@ main_loop:
         jne render_loon 
         
         jmp main_loop
-   
+                      
+    
+    game_over:
+        mov ah,09h
+        mov dx, offset game_over_str
+        int 21h                  
 
 main endp
 
@@ -332,12 +348,5 @@ proc show_score
     mov [bx+15], ':'
     mov [bx+16], dx
 ret    
-show_score endp 
-proc exit
-    MOV AH, 4Ch ; Service 4Ch - Terminate with Error Code
-    MOV AL, 0 ; Error code
-    INT 21h ; Interrupt 21h - DOS General Interrupts
-    ret
-exit endp
 
 end main
