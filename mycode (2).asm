@@ -175,7 +175,7 @@ main_loop:
         jne key_pressed                                                               ;jmp if zero flag == 0 
         
  
-        cmp miss , 2                                                                  ; check number of misses and zf == 1                                                               
+        cmp miss , 8                                                                  ; check number of misses and zf == 1                                                               
         jge game_over                                                                 ; if zf == 1 then close the program
         
         
