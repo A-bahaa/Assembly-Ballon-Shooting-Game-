@@ -1,4 +1,4 @@
-include 'emu8086.inc'
+
 .model large                                ;supports multiple code and multiple data segments.   
 .stack 100h   ;a segment directive which defines 100h words as program STACK.
               ;Windows programs are loaded at much higher addresses.
