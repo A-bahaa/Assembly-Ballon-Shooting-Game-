@@ -9,7 +9,7 @@ While the player is playing , the highest score that's been reached within that 
 
 After 8 misses the game over window is shown where a score table that shows the highest score of each player is shown and they can choose which player to play next and that repeats for eternity . 
 
-
+## Video example
 https://user-images.githubusercontent.com/65967989/148474020-61f48bd1-e7a5-4a1f-8b76-e7de93c2f4cd.mp4
 
 
