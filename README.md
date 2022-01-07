@@ -21,9 +21,8 @@ Download and setup [EMU8086](https://emu8086-microprocessor-emulator.en.softonic
 
 ## Here's a flowchart so you don't get lost
 
-![Screenshot 2022-01-07 034701](https://user-images.githubusercontent.com/65967989/148478398-74451bb6-dbb3-4ab5-af4c-578cf9f7ea1b.jpg)
-![Screenshot 2022-01-07 034654](https://user-images.githubusercontent.com/65967989/148478442-e0f0dbac-e156-4559-a13b-1960108489c2.jpg)
-![Screenshot 2022-01-07 035034](https://user-images.githubusercontent.com/65967989/148478471-d90165f1-6bac-4f56-b687-f486b3f801fb.jpg)
+![MP project - Ballon Shooting Game@2x](https://user-images.githubusercontent.com/65967989/148479404-b2796f24-b333-4e17-9cb4-8cfd444b9c7f.png)
+
 
 
 ## Team members
