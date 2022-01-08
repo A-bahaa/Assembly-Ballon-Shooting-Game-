@@ -24,6 +24,11 @@ Download and setup [EMU8086](https://emu8086-microprocessor-emulator.en.softonic
 ![MP project - Ballon Shooting Game@2x](https://user-images.githubusercontent.com/65967989/148479404-b2796f24-b333-4e17-9cb4-8cfd444b9c7f.png)
 
 
+# This Project was under supervision of:
+
+- Dr. Abd-Elhamid Al-Etaby
+- Eng. Ahmed Bakr
+
 
 ## Team members
 - [Nourhan Ashraf](https://github.com/nourhan-ashraf)
